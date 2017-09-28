@@ -1,0 +1,27 @@
+1. Find the Ra & Dec of all objects with B > 16
+
+SELECT Ra,Dec FROM MagTable WHERE B>16;
+
+2. Output B, R, Teff and FeH for all stars (is this question well-defined?).
+
+select m.B, m.R, p.Teff, p.FeH
+from
+	MagTable as m
+	JOIN PhysTable as p
+	ON m.Name = p.Name
+Where m.Name IN ('VO-001','VO-002','VO-003','VO-004');
+
+%Clearly VO-004 doesn't have any equivalent data in PhysTable and hence no row output for that.
+	
+3. Output the same for all objects with FeH > 0
+
+select m.B, m.R, p.Teff, p.FeH
+from
+	MagTable as m
+	JOIN PhysTable as p
+	ON m.Name = p.Name
+Where m.Name IN ('VO-001','VO-002','VO-003','VO-004') AND p.FeH>0;
+
+4. Create a table with the B-R colour
+
+SELECT Name, B, R, B-R as BR FROM MagTable
