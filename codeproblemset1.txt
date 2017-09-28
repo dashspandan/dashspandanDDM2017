@@ -1,0 +1,27 @@
+1. When did we observe S2? 
+
+select s.Star, o.Field, o.Date
+from
+	Stars as s
+	JOIN Observations as o
+	ON s.fieldID = o.ID
+Where Star = 'S2'
+
+2. Where is the FITS image stored for Star S5?
+
+select s.Star, o.WhereStored
+from
+	Stars as s
+	JOIN Observations as o
+	ON s.fieldID = o.ID
+Where Star = 'S5'
+
+3. Give me a list of all stars observed on the same Field ID.
+
+select o.ID, s.Star
+	from Observations as o
+	JOIN Stars as s
+	On o.ID = s.fieldID
+Where fieldID IN ('1','2','3')
+
+% FieldID can be changed to the specific ID number required too.
